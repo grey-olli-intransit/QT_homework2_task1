@@ -18,7 +18,7 @@ class InsertSpecialSymbol
 {
 public:
     InsertSpecialSymbol();
-    InsertSpecialSymbol(QString & str);
+    bool insertSpecialSymbol(QString & str);
 //    static int findNextBegin(QString & str);
 //    static int findNextEnd(QString & str);
 //    ~InsertSpecialSymbol();

@@ -26,8 +26,8 @@ void MainWindow::on_pushButton_clicked()
 void MainWindow::on_plainTextEdit_textChanged()
 {
     QString contents = ui->plainTextEdit->toPlainText();
-    QString & linkToContents = contents;
-    insSymPtr->InsertSpecialSymbol(linkToContents);
-    ui->plainTextEdit->setPlainText(contents);
+    if (insSymPtr->insertSpecialSymbol(contents)) {
+        ui->plainTextEdit->setPlainText(contents);
+    }
 }
 

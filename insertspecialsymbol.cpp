@@ -4,7 +4,7 @@ InsertSpecialSymbol::InsertSpecialSymbol()
 {
 }
 
-InsertSpecialSymbol::InsertSpecialSymbol(QString & str)
+bool InsertSpecialSymbol::insertSpecialSymbol(QString & str)
 {
   constexpr const char roubleSym[4]  = "₽";
   constexpr const char euroSym[4] = "€";
@@ -39,11 +39,17 @@ InsertSpecialSymbol::InsertSpecialSymbol(QString & str)
               << trademarkSymQ ;
 
 
+  bool found=false;
+
   QString textAsStr=str;
   QStringList buffer;
   buffer << textAsStr;
   for (int i=0;i<4;i++) {
-    buffer.replaceInStrings(editorMarks[i],replSymbols[i]);
+    if (str.contains(editorMarks[i],Qt::CaseSensitive)) {
+    buffer.replaceInStrings(editorMarks[i],replSymbols[i], Qt::CaseInsensitive);
+    found=true;
+    }
   }
   str = buffer[0];
+  return found;
 }
